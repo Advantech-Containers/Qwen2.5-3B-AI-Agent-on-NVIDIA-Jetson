@@ -154,8 +154,6 @@ The following software components are available in the base image:
 | PyTorch      | 2.0.0+nv23.02  | Deep learning framework            |
 | TensorFlow   | 2.12.0         | Machine learning framework         |
 | ONNX Runtime | 1.16.3         | Cross-platform inference engine    |
-| VPI          | 3.2.4          | Vision Programming Interface       |
-| Vulkan       | 1.3.204        | Graphics and compute API           |
 | OpenCV       | 4.8.0          | Computer vision library with CUDA® |
 | GStreamer    | 1.16.2         | Multimedia framework               |
 
@@ -315,7 +313,7 @@ Here are quick commands/instructions to troubleshoot issues with the Jetson™ L
   ./start_services.sh
   ```
 
-- In some cases, it has been found that if Ollama is also present at the host, it may give permission issues during pulling models within the container. Uninstalling host Ollama may solve the issue quickly. Follow this link for uninstallation steps - [Uninstall Ollama.](https://docs.ollama.com/linux#uninstall)
+- In some cases, it has been found that if Ollama is also present at the host, it may give permission issues during pulling models within the container. Uninstalling host Ollama may solve the issue quickly. Follow this link for uninstallation steps - [Uninstall Ollama.](https://github.com/ollama/ollama/blob/main/docs/linux.md#uninstall)
 
 
 ## Best Practices and Recommendations
@@ -353,7 +351,7 @@ Ollama APIs are accessible on the default endpoint (unless modified). If needed,
 
 Inference Request:
 ```
-curl http://localhost_or_Jetson_IP:11434/api/generate -d '{
+curl http://localhost:11434/api/generate -d '{
   "model": "qwen2.5:3b",
   "prompt": "Why is the sky blue?",
   "stream": false
@@ -392,7 +390,7 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "model": "string",
+  "model": "qwen2.5:3b",
   "messages": [
     {
       "role": "user",
